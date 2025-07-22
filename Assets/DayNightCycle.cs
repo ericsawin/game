@@ -32,6 +32,9 @@ public class DayNightCycle : MonoBehaviour
 
     public bool isDay = true;
 
+    public bool sunActive;
+    public bool moonActive;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -135,6 +138,28 @@ public class DayNightCycle : MonoBehaviour
             sunLightData.EnableShadows(false);
             moonLightData.EnableShadows(true);
             isDay = false;
+        }
+
+        if (currentSunRotation >= 5.7f && currentSunRotation <= 18.3f)
+        {
+            sunLightData.gameObject.SetActive(true);
+            sunActive = true;
+        }
+        else
+        {
+            sunLightData.gameObject.SetActive(false);
+            sunActive = false;
+        }
+
+        if (currentSunRotation >= 6.3f && currentSunRotation <= 17.7f)
+        {
+            moonLightData.gameObject.SetActive(false);
+            moonActive = false;
+        }
+        else
+        {
+            moonLightData.gameObject.SetActive(true);
+            moonActive = true;
         }
     }
 }
